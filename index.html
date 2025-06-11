@@ -109,7 +109,7 @@
         #about .profile-left { /* 左侧头像及联系信息 */
             flex: 0 0 220px; /* 固定宽度 */
             margin-right: 40px; /* 右侧间距 */
-            text-align: center;
+            text-align: left; /* **核心改动：左对齐** */
         }
         #about .profile-pic {
             width: 180px;
@@ -119,6 +119,7 @@
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
+            display: block; /* 确保图片可以居中 */
         }
         #about .profile-pic img {
             width: 100%;
@@ -130,6 +131,7 @@
             font-size: 0.9em;
             color: #555;
             line-height: 1.8;
+            text-align: left; /* **核心改动：联系信息文本左对齐** */
         }
         #about .profile-left .contact-info p {
             margin: 0; /* 移除段落默认间距 */
@@ -164,9 +166,11 @@
 
         /* Research Section 样式 (新布局) */
         #research.content-section {
-            display: flex; /* 使用flexbox布局 */
-            align-items: flex-start; /* 顶部对齐 */
+            display: none; /* **核心改动：默认隐藏 Research Section** */
+            flex-direction: row; /* 保持左右布局，应对可能被 JavaScript 强制显示 */
+            align-items: flex-start;
             padding: 30px;
+            margin-bottom: 25px; /* 保持与其他section一样的间距 */
         }
         #research .sidebar { /* 左侧固定个人信息 */
             flex: 0 0 220px; /* 固定宽度 */
@@ -188,6 +192,7 @@
             border: 3px solid #eee;
             border-radius: 50%;
             overflow: hidden;
+            display: block; /* 确保图片可以居中 */
         }
         #research .sidebar .profile-pic img {
             width: 100%;
@@ -204,15 +209,24 @@
             margin-left: 8px;
             color: #666;
         }
+        #research .sidebar .position {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 10px;
+        }
         #research .sidebar .contact-info {
             font-size: 0.85em;
             color: #555;
             line-height: 1.6;
             margin-top: 15px;
+            text-align: left; /* **核心改动：Research侧边栏联系信息左对齐** */
+            padding-left: 20px; /* 稍微缩进，避免紧贴左侧 */
+            padding-right: 20px; /* 稍微缩进 */
         }
         #research .sidebar .contact-info p {
             margin: 0;
         }
+
 
         #research .main-content { /* 右侧 Publications 和 Working Papers */
             flex-grow: 1; /* 占据剩余空间 */
@@ -282,7 +296,10 @@
                 border: none; /* 移除边框 */
             }
             #about .profile-pic, #research .sidebar .profile-pic {
-                margin: 0 auto 15px auto;
+                margin: 0 auto 15px auto; /* 图片居中 */
+            }
+            #about .profile-left .contact-info { /* 小屏幕下联系信息居中 */
+                text-align: center;
             }
             #about .profile-right, #research .main-content {
                 text-align: center; /* 文本居中 */
@@ -298,6 +315,8 @@
             }
             #research .sidebar .contact-info {
                 text-align: center; /* 侧边栏联系信息居中 */
+                padding-left: 0; /* 移除padding */
+                padding-right: 0; /* 移除padding */
             }
             #about .profile-right .position {
                 text-align: center; /* 职务居中 */
@@ -341,7 +360,8 @@
     <nav>
         <div class="container">
             <ul>
-                <li><a href="#about">About</a></li> <li><a href="#research">Research</a></li>
+                <li><a href="#about" class="nav-link" data-target="about">About</a></li>
+                <li><a href="#research" class="nav-link" data-target="research">Research</a></li>
             </ul>
         </div>
     </nav>
@@ -360,7 +380,7 @@
             <div class="profile-right">
                 <h2>Yinan Liu <span class="chinese-name">(刘逸楠)</span></h2>
                 <p class="position">Assistant Professor, School of Applied Economics, Renmin University of China</p>
-                <p class="research-description-about">My research interests primarily lie in Public Economics, Health Economics, Development Economics, and Applied Microeconomics. I am particularly interested in understanding the economic impacts of public policies and technological advancements on health outcomes and economic development, often utilizing micro-econometric methods.</p>
+                <p class="research-description-about">My research interests primarily lie in **Public Economics**, **Health Economics**, **Development Economics**, and **Applied Microeconomics**. I am particularly interested in understanding the economic impacts of public policies and technological advancements on health outcomes and economic development, often utilizing micro-econometric methods.</p>
             </div>
         </section>
 
@@ -396,11 +416,53 @@
                 </section>
             </div>
         </section>
-
-        </div>
+    </div>
 
     <footer>
         <p>Last updated: June 10, 2025</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const aboutSection = document.getElementById('about');
+            const researchSection = document.getElementById('research');
+
+            // Function to show a section and hide others
+            function showSection(targetId) {
+                if (targetId === 'about') {
+                    aboutSection.style.display = 'flex'; // Show about section
+                    researchSection.style.display = 'none'; // Hide research section
+                    // Scroll to top of the about section if already at the top of the page
+                    window.scrollTo({ top: aboutSection.offsetTop - 80, behavior: 'smooth' }); // Adjust 80 for fixed nav height
+                } else if (targetId === 'research') {
+                    aboutSection.style.display = 'none'; // Hide about section
+                    researchSection.style.display = 'flex'; // Show research section
+                    // Scroll to top of the research section
+                    window.scrollTo({ top: researchSection.offsetTop - 80, behavior: 'smooth' }); // Adjust 80 for fixed nav height
+                }
+            }
+
+            // Add click event listener to each nav link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default anchor link behavior (i.e., jumping directly)
+                    const targetId = this.getAttribute('data-target');
+                    showSection(targetId);
+
+                    // Update URL hash without causing full page reload
+                    history.pushState(null, '', '#' + targetId);
+                });
+            });
+
+            // Check URL hash on page load to display correct section
+            const initialHash = window.location.hash.substring(1); // Remove '#'
+            if (initialHash === 'research') {
+                showSection('research');
+            } else {
+                showSection('about'); // Default to about section
+            }
+        });
+    </script>
 </body>
 </html>
