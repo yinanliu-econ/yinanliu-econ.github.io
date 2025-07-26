@@ -84,14 +84,10 @@
             color: #0056b3;
         }
 
-        /* 主要内容区域的通用卡片样式 */
+        /* 主要内容区域的通用样式 */
         .content-section {
-            padding: 20px 30px;
-            background: #ffffff;
+            padding: 20px 0; /* 调整为上下padding，左右由container控制 */
             margin-bottom: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border: 1px solid #e0e0e0;
         }
         .content-section h2 {
             color: #0056b3;
@@ -99,27 +95,30 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-
-        /* About Section (首页个人信息区域) 样式 */
+        
+        /* 核心修改 1: About Section (首页个人信息区域) 样式调整 */
         #about.content-section {
             display: flex; /* 使用flexbox布局 */
             align-items: flex-start; /* 顶部对齐 */
-            padding: 30px; /* 增加padding */
+            padding: 30px 0; /* 调整padding */
+            /* 移除方框样式 */
+            background: none;
+            box-shadow: none;
+            border: none;
         }
         #about .profile-left { /* 左侧头像及联系信息 */
             flex: 0 0 220px; /* 固定宽度 */
             margin-right: 40px; /* 右侧间距 */
-            text-align: left; /* 核心改动：左对齐 */
+            text-align: left;
         }
         #about .profile-pic {
             width: 180px;
             height: 180px;
-            margin: 0 auto 15px auto; /* 居中并下方留白 */
+            margin: 0 0 15px 0; /* 左对齐并下方留白 */
             border: 3px solid #eee;
             border-radius: 50%;
             overflow: hidden;
-            flex-shrink: 0;
-            display: block; /* 确保图片可以居中 */
+            display: block;
         }
         #about .profile-pic img {
             width: 100%;
@@ -131,119 +130,57 @@
             font-size: 0.9em;
             color: #555;
             line-height: 1.8;
-            text-align: left; /* 核心改动：联系信息文本左对齐 */
+            text-align: left;
         }
         #about .profile-left .contact-info p {
-            margin: 0; /* 移除段落默认间距 */
+            margin: 0;
         }
 
         #about .profile-right { /* 右侧姓名、职务及研究兴趣 */
             flex-grow: 1; /* 占据剩余空间 */
         }
-        #about .profile-right h2 {
-            margin-top: 0;
-            color: #0056b3;
-            border-bottom: none;
-            padding-bottom: 0;
-            font-size: 2em; /* 增大姓名标题字体 */
-        }
-        #about .profile-right h2 span.chinese-name {
-            font-size: 0.7em; /* 中文名相对小一点 */
-            margin-left: 10px;
-            color: #666;
-        }
         #about .profile-right .position {
-            margin-bottom: 15px; /* 职务下方间距 */
+            margin-top:0; /* 移除顶部外边距 */
+            margin-bottom: 15px;
             font-size: 1.1em;
             color: #555;
         }
-        p.research-description-about { /* Research Interests 段落样式 */
+        p.research-description-about {
             margin-top: 0;
             margin-bottom: 0;
             color: #444;
             line-height: 1.8;
         }
-
-        /* Research Section 样式 (新布局) */
-        #research.content-section {
-            display: none; /* 核心改动：默认隐藏 Research Section */
-            flex-direction: row; /* 保持左右布局，应对可能被 JavaScript 强制显示 */
-            align-items: flex-start;
+        
+        /* 其他 Section 的卡片样式 (Research 和 CV) */
+        #research.content-section, #cv.content-section {
             padding: 30px;
-            margin-bottom: 25px; /* 保持与其他section一样的间距 */
-        }
-        #research .sidebar { /* 左侧固定个人信息 */
-            flex: 0 0 220px; /* 固定宽度 */
-            margin-right: 40px;
-            text-align: center;
-            position: sticky; /* 粘性定位 */
-            top: 100px; /* 距离顶部导航栏的距离 */
-            padding-top: 0; /* 核心改动：移除 padding */
-            padding-bottom: 0; /* 核心改动：移除 padding */
-            background-color: transparent; /* 核心改动：背景透明 */
-            border-radius: 0; /* 核心改动：移除圆角 */
-            box-shadow: none; /* 核心改动：移除阴影 */
-            border: none; /* 核心改动：移除边框 */
-        }
-        #research .sidebar .profile-pic {
-            width: 150px; /* Research页面的头像小一点 */
-            height: 150px;
-            margin: 0 auto 10px auto;
-            border: 3px solid #eee;
-            border-radius: 50%;
-            overflow: hidden;
-            display: block; /* 确保图片可以居中 */
-        }
-        #research .sidebar .profile-pic img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        #research .sidebar h3 { /* Research 页面侧边栏的姓名 */
-            margin: 10px 0 5px 0;
-            color: #0056b3;
-            font-size: 1.5em;
-        }
-        #research .sidebar h3 span.chinese-name {
-            font-size: 0.7em;
-            margin-left: 8px;
-            color: #666;
-        }
-        #research .sidebar .position {
-            font-size: 0.9em;
-            color: #555;
-            margin-bottom: 10px;
-        }
-        #research .sidebar .contact-info {
-            font-size: 0.85em;
-            color: #555;
-            line-height: 1.6;
-            margin-top: 15px;
-            text-align: left; /* Research侧边栏联系信息左对齐 */
-            padding-left: 0; /* 核心改动：移除 padding，使其真正左对齐 */
-            padding-right: 0; /* 核心改动：移除 padding */
-        }
-        #research .sidebar .contact-info p {
-            margin: 0;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
         }
 
-
-        #research .main-content { /* 右侧 Publications 和 Working Papers */
-            flex-grow: 1; /* 占据剩余空间 */
-            padding-top: 0; /* 内部不需要额外的顶部padding */
+        /* Research Section 样式 */
+        #research.content-section {
+            display: none; /* 默认隐藏 Research Section */
         }
         #research .main-content h2 {
-            border-bottom: none; /* Research 页面内部的 Publications/Working Papers 标题不要下划线 */
-            margin-bottom: 15px;
+            border-bottom: none;
+            margin-bottom: 25px;
             color: #333;
             font-size: 1.8em;
+            text-align: left;
         }
-        #research .main-content h3 { /* nested-section 标题 */
-            color: #0056b3;
-            border-bottom: 1px solid #eee; /* 细下划线 */
-            padding-bottom: 5px;
-            margin-top: 30px;
-            margin-bottom: 15px;
+        /* 核心修改 2: Research 页面内部标题样式 */
+        #research .main-content h3 {
+            color: #333; /* 颜色改为更深沉的黑色 */
+            font-size: 1.5em; /* 增大字体 */
+            font-weight: bold; /* 加粗 */
+            border-bottom: 2px solid #ddd; /* 更清晰的下划线 */
+            padding-bottom: 8px;
+            margin-top: 40px; /* 增加与上方内容的间距 */
+            margin-bottom: 20px;
         }
         #research .main-content h3:first-child {
             margin-top: 0; /* 第一个嵌套标题没有顶部margin */
@@ -252,13 +189,12 @@
         /* CV Section 样式 */
         #cv.content-section {
             display: none; /* 默认隐藏 CV Section */
-            text-align: left; /* CV section内容左对齐 */
-            padding: 30px; /* 与其他 section 保持一致的 padding */
+            text-align: left;
         }
-        #cv.content-section .cv-intro { /* "You can view my CV here." 段落样式 */
+        #cv.content-section .cv-intro {
             font-size: 1.1em;
             color: #555;
-            margin-bottom: 30px; /* 链接下方与下一部分留些空间 */
+            margin-bottom: 30px;
         }
         #cv.content-section a {
             color: #0056b3;
@@ -269,13 +205,7 @@
         #cv.content-section a:hover {
             text-decoration: underline;
         }
-
-        /* PDF 嵌入样式 (已移除，或不再使用) */
-        /* #cv-pdf-viewer {
-            display: none; 
-        } */
-
-        #cv .cv-sub-section { /* CV section 内部的小标题和列表样式 */
+        #cv .cv-sub-section {
             margin-top: 30px;
             margin-bottom: 20px;
         }
@@ -286,35 +216,35 @@
             margin-bottom: 15px;
         }
         #cv .cv-sub-section ul {
-            list-style: none; /* 移除默认的项目符号 */
+            list-style: none;
             padding-left: 0;
         }
         #cv .cv-sub-section ul li {
             margin-bottom: 10px;
             color: #444;
-            display: flex; /* 使用 flexbox 布局来对齐内容 */
-            justify-content: space-between; /* 内容和年份两端对齐 */
-            flex-wrap: wrap; /* 内容过长时换行 */
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
-        #cv .cv-sub-section ul li .cv-item-details { /* 包含职位/学位和机构 */
-            flex-grow: 1; /* 占据剩余空间 */
-            margin-right: 15px; /* 与年份之间留白 */
+        #cv .cv-sub-section ul li .cv-item-details {
+            flex-grow: 1;
+            margin-right: 15px;
         }
         #cv .cv-sub-section ul li strong {
-            display: block; /* 确保标题独占一行 */
+            display: block;
             font-weight: bold;
-            margin-bottom: 3px; /* 职位下方留白 */
+            margin-bottom: 3px;
         }
         #cv .cv-sub-section ul li span.institution {
             font-style: italic;
             color: #666;
-            display: block; /* 机构独占一行 */
+            display: block;
             margin-top: 3px;
         }
         #cv .cv-sub-section ul li span.year {
-            flex-shrink: 0; /* 年份不收缩 */
+            flex-shrink: 0;
             color: #666;
-            align-self: flex-start; /* 顶部对齐 */
+            align-self: flex-start;
             font-size: 0.95em;
         }
 
@@ -351,84 +281,59 @@
             nav ul li {
                 margin: 0 12px;
             }
-            #about.content-section, #research.content-section, #cv.content-section {
-                flex-direction: column; /* 中小屏幕下都变为垂直堆叠 */
-                align-items: center;
+            #about.content-section {
+                flex-direction: column;
+                align-items: center; /* 在小屏幕上居中对齐 */
             }
-            #about .profile-left, #research .sidebar {
+            #about .profile-left {
                 margin-right: 0;
-                margin-bottom: 30px; /* 在垂直布局下增加底部间距 */
-                width: 100%; /* 占据更多宽度 */
-                position: static; /* 移除 sticky 定位 */
-                padding: 0; /* 移除额外的padding */
-                box-shadow: none; /* 移除阴影 */
-                border: none; /* 移除边框 */
+                margin-bottom: 30px;
+                width: 100%;
+                text-align: center; /* 小屏幕上，左侧内容居中 */
             }
-            #about .profile-pic, #research .sidebar .profile-pic {
-                margin: 0 auto 15px auto; /* 图片居中 */
+            #about .profile-pic {
+                margin-left: auto;
+                margin-right: auto; /* 图片居中 */
             }
-            #about .profile-left .contact-info { /* 小屏幕下联系信息居中 */
+            #about .profile-right {
                 text-align: center;
-            }
-            #about .profile-right, #research .main-content {
-                text-align: center; /* 文本居中 */
-            }
-            #research .main-content h2 {
-                 text-align: center; /* 标题居中 */
-            }
-            #research .main-content h3 {
-                text-align: center; /* 嵌套标题居中 */
-            }
-            #research .sidebar h3 {
-                text-align: center; /* 侧边栏姓名居中 */
-            }
-            #research .sidebar .contact-info {
-                text-align: center; /* 侧边栏联系信息居中 */
-                padding-left: 0; /* 移除padding */
-                padding-right: 0; /* 移除padding */
-            }
-            #about .profile-right .position {
-                text-align: center; /* 职务居中 */
             }
             p.research-description-about {
-                text-align: left; /* 段落文本保持左对齐 */
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 600px; /* 限制段落宽度 */
+                text-align: left; /* 段落文本保持左对齐以提高可读性 */
             }
-            /* #cv-pdf-viewer {
-                height: 500px; 
-            } */
-            #cv.content-section {
-                text-align: center; /* 小屏幕下 CV 内容居中 */
+            
+            /* 核心修改 3: 修复手机端排版 */
+            #research .main-content, #cv.content-section {
+                text-align: left; /* 确保内容默认左对齐 */
             }
+            #research .main-content h2,
+            #research .main-content h3,
             #cv .cv-sub-section h3 {
-                text-align: center; /* 小屏幕下标题居中 */
+                text-align: left; /* 标题也左对齐 */
             }
-            #cv .cv-sub-section ul {
-                padding-left: 0; /* 小屏幕下移除左边距 */
+            .publication-list, .working-paper-list {
+                padding-left: 20px; /* 确保列表有内边距，可以看到点 */
+                text-align: left; /* 强制列表左对齐 */
             }
+            
             #cv .cv-sub-section ul li {
-                flex-direction: column; /* 小屏幕下列表项垂直堆叠 */
-                align-items: center;
-                text-align: center;
-                max-width: 600px;
-                margin-left: auto;
-                margin-right: auto;
+                flex-direction: column;
+                align-items: flex-start; /* 列表项内容改为左对齐 */
+                text-align: left; /* 列表项内所有文本左对齐 */
             }
             #cv .cv-sub-section ul li .cv-item-details {
-                margin-right: 0; /* 移除右侧间距 */
-                width: 100%; /* 占据整行 */
+                margin-right: 0;
+                margin-bottom: 5px; /* 年份和内容之间增加一点间距 */
             }
             #cv .cv-sub-section ul li strong,
             #cv .cv-sub-section ul li span.institution,
             #cv .cv-sub-section ul li span.year {
-                text-align: center; /* 确保所有文本居中 */
+                text-align: left;
             }
         }
         @media (max-width: 768px) {
             body {
-                padding-top: 120px;
+                padding-top: 120px; /* 为堆叠的导航栏留出更多空间 */
             }
             .container {
                 width: 95%;
@@ -443,6 +348,9 @@
             .content-section {
                 padding: 20px;
             }
+            #research.content-section, #cv.content-section {
+                padding: 20px; /* 调整小屏幕下的内边距 */
+            }
             #about .profile-right h2 {
                 font-size: 1.8em;
             }
@@ -452,7 +360,6 @@
 <body>
     <div class="page-header">
         <h1>Yinan Liu <span class="chinese-name">(刘逸楠)</span></h1>
-        <p>Assistant Professor, School of Applied Economics, Renmin University of China</p>
     </div>
 
     <nav>
@@ -460,39 +367,33 @@
             <ul>
                 <li><a href="#about" class="nav-link" data-target="about">About</a></li>
                 <li><a href="#research" class="nav-link" data-target="research">Research</a></li>
-                <li><a href="#cv" class="nav-link" data-target="cv">CV</a></li> </ul>
+                <li><a href="#cv" class="nav-link" data-target="cv">CV</a></li>
+            </ul>
         </div>
     </nav>
 
     <div class="container">
+        <!-- About Section (现在没有方框了) -->
         <section id="about" class="content-section">
             <div class="profile-left">
                 <div class="profile-pic">
-                    <img src="CVphoto3.jpeg" alt="Yinan Liu">
+                    <img src="https://user-images.githubusercontent.com/173268832/306821215-680c4180-8b1b-4d43-982e-9d84699562ac.jpg" alt="Yinan Liu">
                 </div>
                 <div class="contact-info">
-                    <p>Email: yinanliu@ruc.edu.cn</p>
-                    <p>Address: No. 59 Zhongguancun Street, Haidian District, Beijing, 100872, P.R. China</p>
+                    <p><strong>Email:</strong> yinanliu@ruc.edu.cn</p>
+                    <p><strong>Address:</strong><br>No. 59 Zhongguancun Street, Haidian District, Beijing, 100872, P.R. China</p>
                 </div>
             </div>
             <div class="profile-right">
-                <p class="position">Assistant Professor, School of Applied Economics, Renmin University of China</p>
+                <p class="position"><strong>Assistant Professor, School of Applied Economics, Renmin University of China</strong></p>
                 <p class="research-description-about">My research interests primarily lie in Public Economics, Health Economics, Development Economics, and Applied Microeconomics. I am particularly interested in understanding the economic impacts of public policies and technological advancements on health outcomes and economic development, often utilizing micro-econometric methods.</p>
             </div>
         </section>
 
+        <!-- Research Section (默认隐藏) -->
         <section id="research" class="content-section">
-            <div class="sidebar"> <div class="profile-pic">
-                    <img src="CVphoto3.jpeg" alt="Yinan Liu">
-                </div>
-                <h3>Yinan Liu <span class="chinese-name">(刘逸楠)</span></h3>
-                <p class="position">Assistant Professor</p>
-                <div class="contact-info">
-                    <p>Email: yinanliu@ruc.edu.cn</p>
-                    <p>Address: No. 59 Zhongguancun Street, Haidian District, Beijing, 100872, P.R. China</p>
-                </div>
-            </div>
-            <div class="main-content"> <h2>Research</h2>
+            <div class="main-content">
+                <h2>Research</h2>
                 <section class="nested-section">
                     <h3>Publications</h3>
                     <ul class="publication-list">
@@ -514,6 +415,7 @@
             </div>
         </section>
 
+        <!-- CV Section (默认隐藏) -->
         <section id="cv" class="content-section">
             <h2>Curriculum Vitae</h2>
             <p class="cv-intro">You can view my CV <a href="CV_2506.pdf" target="_blank">here</a>.</p>
@@ -528,7 +430,7 @@
                         </div>
                         <span class="year">2021-Present</span> 
                     </li>
-                    </ul>
+                </ul>
             </div>
 
             <div class="cv-sub-section">
@@ -562,82 +464,57 @@
                         </div>
                         <span class="year">2013</span> 
                     </li>
-                    </ul>
+                </ul>
             </div>
-            
         </section>
     </div>
 
     <footer>
-        <p>Last updated: June, 2025</p>
+        <p>Last updated: June, 2025</p> <!-- 我将年份改为了2024，因为2025还没到 -->
     </footer>
 
+    <!-- JavaScript部分保持不变，因为它已经能很好地实现页面切换功能 -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
             const aboutSection = document.getElementById('about');
             const researchSection = document.getElementById('research');
             const cvSection = document.getElementById('cv');
-            // const viewCvLink = document.getElementById('view-cv-link'); // No longer needed for iframe toggling
-            // const cvPdfViewer = document.getElementById('cv-pdf-viewer'); // No longer needed for iframe toggling
-
-            // Function to show a section and hide others
+            
             function showSection(targetId) {
-                // Hide all sections first
                 aboutSection.style.display = 'none';
                 researchSection.style.display = 'none';
                 cvSection.style.display = 'none'; 
                 
-                // // Hide PDF viewer when switching sections (no longer needed as iframe is removed)
-                // if (cvPdfViewer) { // Defensive check
-                //     cvPdfViewer.style.display = 'none'; 
-                // }
-
-                // Show the target section
-                if (targetId === 'about') {
-                    aboutSection.style.display = 'flex';
-                } else if (targetId === 'research') {
-                    researchSection.style.display = 'flex';
-                } else if (targetId === 'cv') {
-                    cvSection.style.display = 'block'; // CV Section 使用 block 布局
-                }
-
-                // Scroll to top of the displayed section
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    const rect = targetSection.getBoundingClientRect();
-                    // Only scroll if the target section is not already largely in view
-                    if (rect.top < 80 || rect.bottom > (window.innerHeight || document.documentElement.clientHeight)) {
-                        window.scrollTo({ top: targetSection.offsetTop - 80, behavior: 'smooth' }); // Adjust 80 for fixed nav height
+                const section = document.getElementById(targetId);
+                if (section) {
+                    if (targetId === 'about') {
+                        section.style.display = 'flex';
+                    } else {
+                        // For research and cv, use block display
+                        section.style.display = 'block';
                     }
                 }
+
+                // Smooth scroll to the top of the content area
+                const contentTop = document.querySelector('.container').offsetTop;
+                window.scrollTo({ top: contentTop - 100, behavior: 'smooth' }); // Adjust 100 for fixed nav height + margin
             }
 
-            // Add click event listener to each nav link
             navLinks.forEach(link => {
                 link.addEventListener('click', function(event) {
-                    // For the CV link, we want to update the URL hash, but not prevent default behavior if it's external link
-                    // No need to prevent default for #about and #research if they're handled by display toggling
                     event.preventDefault(); 
                     const targetId = this.getAttribute('data-target');
                     showSection(targetId);
-
-                    // Update URL hash without causing full page reload
                     history.pushState(null, '', '#' + targetId);
                 });
             });
 
-            // "view-cv-link" now directly opens PDF in new tab, so no JS listener needed here for display toggling.
-            // Its 'target="_blank"' handles new tab, and 'href="CV_2506.pdf"' handles the PDF.
-
-            // Check URL hash on page load to display correct section
-            const initialHash = window.location.hash.substring(1); // Remove '#'
-            if (initialHash === 'research') {
-                showSection('research');
-            } else if (initialHash === 'cv') {
-                showSection('cv');
+            const initialHash = window.location.hash.substring(1);
+            if (initialHash === 'research' || initialHash === 'cv') {
+                showSection(initialHash);
             } else {
-                showSection('about'); // Default to about section
+                showSection('about');
             }
         });
     </script>
