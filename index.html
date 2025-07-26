@@ -10,12 +10,12 @@
             line-height: 1.6;
             margin: 0;
             padding-top: 80px; /* 为固定导航栏留出空间 */
-            background: #fdfdfd; /* 整体背景色改为接近白色 */
+            background: #fdfdfd;
             color: #333;
         }
         .container {
-            width: 70%; /* 调整内容区域宽度，使其更窄 */
-            max-width: 960px; /* 设置最大宽度 */
+            width: 70%;
+            max-width: 960px;
             margin: auto;
             overflow: hidden;
             padding: 20px 0;
@@ -66,7 +66,7 @@
             list-style: none;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* 允许换行 */
             margin: 0;
         }
         nav ul li {
@@ -86,7 +86,7 @@
 
         /* 主要内容区域的通用样式 */
         .content-section {
-            padding: 20px 0; /* 调整为上下padding，左右由container控制 */
+            padding: 20px 0;
             margin-bottom: 25px;
         }
         .content-section h2 {
@@ -96,25 +96,23 @@
             margin-bottom: 20px;
         }
         
-        /* 核心修改 1: About Section (首页个人信息区域) 样式调整 */
         #about.content-section {
-            display: flex; /* 使用flexbox布局 */
-            align-items: flex-start; /* 顶部对齐 */
-            padding: 30px 0; /* 调整padding */
-            /* 移除方框样式 */
+            display: flex;
+            align-items: flex-start;
+            padding: 30px 0;
             background: none;
             box-shadow: none;
             border: none;
         }
-        #about .profile-left { /* 左侧头像及联系信息 */
-            flex: 0 0 220px; /* 固定宽度 */
-            margin-right: 40px; /* 右侧间距 */
+        #about .profile-left {
+            flex: 0 0 220px;
+            margin-right: 40px;
             text-align: left;
         }
         #about .profile-pic {
             width: 180px;
             height: 180px;
-            margin: 0 0 15px 0; /* 左对齐并下方留白 */
+            margin: 0 0 15px 0;
             border: 3px solid #eee;
             border-radius: 50%;
             overflow: hidden;
@@ -135,12 +133,11 @@
         #about .profile-left .contact-info p {
             margin: 0;
         }
-
-        #about .profile-right { /* 右侧姓名、职务及研究兴趣 */
-            flex-grow: 1; /* 占据剩余空间 */
+        #about .profile-right {
+            flex-grow: 1;
         }
         #about .profile-right .position {
-            margin-top:0; /* 移除顶部外边距 */
+            margin-top:0;
             margin-bottom: 15px;
             font-size: 1.1em;
             color: #555;
@@ -152,7 +149,6 @@
             line-height: 1.8;
         }
         
-        /* 其他 Section 的卡片样式 (Research 和 CV) */
         #research.content-section, #cv.content-section {
             padding: 30px;
             background: #ffffff;
@@ -161,34 +157,26 @@
             border: 1px solid #e0e0e0;
         }
 
-        /* Research Section 样式 */
         #research.content-section {
-            display: none; /* 默认隐藏 Research Section */
-        }
-        #research .main-content h2 {
-            border-bottom: none;
-            margin-bottom: 25px;
-            color: #333;
-            font-size: 1.8em;
-            text-align: left;
-        }
-        /* 核心修改 2: Research 页面内部标题样式 */
-        #research .main-content h3 {
-            color: #333; /* 颜色改为更深沉的黑色 */
-            font-size: 1.5em; /* 增大字体 */
-            font-weight: bold; /* 加粗 */
-            border-bottom: 2px solid #ddd; /* 更清晰的下划线 */
-            padding-bottom: 8px;
-            margin-top: 40px; /* 增加与上方内容的间距 */
-            margin-bottom: 20px;
-        }
-        #research .main-content h3:first-child {
-            margin-top: 0; /* 第一个嵌套标题没有顶部margin */
+            display: none;
         }
         
-        /* CV Section 样式 */
+        /* 核心修改 2 & 3: 统一 Research 和 CV 页面的小标题样式 */
+        #research .main-content h3, #cv .cv-sub-section h3 {
+            color: #0056b3; /* 改为蓝色 */
+            font-size: 1.3em; /* 调整字体大小使其统一 */
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        #research .main-content h3:first-child, #cv .cv-sub-section:first-of-type h3 {
+            margin-top: 0;
+        }
+        
         #cv.content-section {
-            display: none; /* 默认隐藏 CV Section */
+            display: none;
             text-align: left;
         }
         #cv.content-section .cv-intro {
@@ -208,12 +196,6 @@
         #cv .cv-sub-section {
             margin-top: 30px;
             margin-bottom: 20px;
-        }
-        #cv .cv-sub-section h3 {
-            color: #0056b3;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
         }
         #cv .cv-sub-section ul {
             list-style: none;
@@ -248,21 +230,25 @@
             font-size: 0.95em;
         }
 
-        /* 列表样式 (通用) */
+        /* 核心修改 4: 论文列表样式 */
         ul {
             list-style: disc;
             padding-left: 20px;
             margin: 0;
         }
-        ul li {
-            margin-bottom: 10px;
-            color: #444;
-        }
         .publication-list li, .working-paper-list li {
-            margin-bottom: 15px;
+            margin-bottom: 20px; /* 增加论文间距 */
+            line-height: 1.7; /* 增加行高，更易读 */
         }
-
-        /* 底部样式 */
+        .publication-list li strong, .working-paper-list li strong {
+            font-weight: bold;
+            display: block; /* 让题目单独占一行 */
+            margin-bottom: 4px;
+        }
+        .publication-list li em, .working-paper-list li em {
+            font-style: italic;
+        }
+        
         footer {
             text-align: center;
             padding: 30px 20px;
@@ -278,52 +264,46 @@
             .container {
                 width: 85%;
             }
-            nav ul li {
-                margin: 0 12px;
-            }
             #about.content-section {
                 flex-direction: column;
-                align-items: center; /* 在小屏幕上居中对齐 */
+                align-items: center;
             }
             #about .profile-left {
                 margin-right: 0;
                 margin-bottom: 30px;
                 width: 100%;
-                text-align: center; /* 小屏幕上，左侧内容居中 */
+                text-align: center;
             }
             #about .profile-pic {
                 margin-left: auto;
-                margin-right: auto; /* 图片居中 */
+                margin-right: auto;
             }
             #about .profile-right {
                 text-align: center;
             }
             p.research-description-about {
-                text-align: left; /* 段落文本保持左对齐以提高可读性 */
+                text-align: left;
             }
             
-            /* 核心修改 3: 修复手机端排版 */
             #research .main-content, #cv.content-section {
-                text-align: left; /* 确保内容默认左对齐 */
+                text-align: left;
             }
-            #research .main-content h2,
-            #research .main-content h3,
-            #cv .cv-sub-section h3 {
-                text-align: left; /* 标题也左对齐 */
+            #research .main-content h3, #cv .cv-sub-section h3 {
+                text-align: left;
             }
             .publication-list, .working-paper-list {
-                padding-left: 20px; /* 确保列表有内边距，可以看到点 */
-                text-align: left; /* 强制列表左对齐 */
+                padding-left: 20px;
+                text-align: left;
             }
             
             #cv .cv-sub-section ul li {
                 flex-direction: column;
-                align-items: flex-start; /* 列表项内容改为左对齐 */
-                text-align: left; /* 列表项内所有文本左对齐 */
+                align-items: flex-start;
+                text-align: left;
             }
             #cv .cv-sub-section ul li .cv-item-details {
                 margin-right: 0;
-                margin-bottom: 5px; /* 年份和内容之间增加一点间距 */
+                margin-bottom: 5px;
             }
             #cv .cv-sub-section ul li strong,
             #cv .cv-sub-section ul li span.institution,
@@ -332,24 +312,24 @@
             }
         }
         @media (max-width: 768px) {
+            /* 核心修改 3: 保持手机导航横向排列 */
             body {
-                padding-top: 120px; /* 为堆叠的导航栏留出更多空间 */
+                padding-top: 80px; /* 恢复为单行导航栏的高度 */
             }
+            nav ul {
+                flex-direction: row; /* 强制横向 */
+                flex-wrap: wrap; /* 允许在空间不足时换行 */
+                justify-content: center; /* 居中对齐 */
+            }
+            nav ul li {
+                margin: 5px 10px; /* 调整间距以适应小屏幕 */
+            }
+            
             .container {
                 width: 95%;
             }
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            nav ul li {
-                margin: 8px 0;
-            }
-            .content-section {
+            .content-section, #research.content-section, #cv.content-section {
                 padding: 20px;
-            }
-            #research.content-section, #cv.content-section {
-                padding: 20px; /* 调整小屏幕下的内边距 */
             }
             #about .profile-right h2 {
                 font-size: 1.8em;
@@ -373,11 +353,11 @@
     </nav>
 
     <div class="container">
-        <!-- About Section (现在没有方框了) -->
+        <!-- About Section -->
         <section id="about" class="content-section">
             <div class="profile-left">
                 <div class="profile-pic">
-                    <img src="CVphoto3.jpeg" alt="Yinan Liu">  
+                    <img src="CVphoto3.jpeg" alt="Yinan Liu">
                 </div>
                 <div class="contact-info">
                     <p><strong>Email:</strong> yinanliu@ruc.edu.cn</p>
@@ -390,32 +370,52 @@
             </div>
         </section>
 
-        <!-- Research Section (默认隐藏) -->
+        <!-- Research Section -->
         <section id="research" class="content-section">
             <div class="main-content">
-                <h2>Research</h2>
+                <!-- 核心修改 1: "Research" 标题已被删除 -->
                 <section class="nested-section">
                     <h3>Publications</h3>
                     <ul class="publication-list">
-                        <li>"Green Innovation through Trade: the Impact of European Union Emissions Trading Scheme on Chinese Exporters", with Peiyao Lv, and Hao Zhao, Journal of International Money and Finance (2024)</li>
+                        <!-- 核心修改 4: 更新了论文格式 -->
+                        <li>
+                            <strong>Green Innovation through Trade: the Impact of European Union Emissions Trading Scheme on Chinese Exporters</strong><br>
+                            with Peiyao Lv, and Hao Zhao, <em>Journal of International Money and Finance (2024)</em>
+                        </li>
                     </ul>
                 </section>
 
                 <section class="nested-section">
                     <h3>Working Papers</h3>
                     <ul class="working-paper-list">
-                        <li>"Biting the Hand That Teaches: Unraveling the Economic Impact of Banning Private Tutoring in China", with Zibin Huang, Mingming Ma and Leo Y. Yang (Revise and Resubmit at Journal of Comparative Economics)</li>
-                        <li>"Beyond Wealth: The Impact of Robot Adoption on Chronic Diseases", with Zou Wang, Xiaoxuan Jin, and Angdi Lu (Revise and Resubmit at Health Economics)</li>
-                        <li>"When National Canal Meets Local Pipelines: Clean Water Supply, Local Infrastructure and Health Benefits", with Yazhen Gong, and Hao Zhao (Revise and Resubmit at Journal of Environmental Economics and Management)</li>
-                        <li>"Exploitation vs. Exploration: How Knowledge Spillovers Shape Healthcare Practices and Innovation", with Chen Lin, Zixiao Li, and Jing Zhang</li>
-                        <li>"Does Telemedicine Alleviate Concerns About Healthcare Accessibility? Evidence from China"</li>
-                        <li>"The Value of Medicaid Long-Term Care: Evidence from the Deficit Reduction Act of 2005"</li>
+                        <li>
+                            <strong>Biting the Hand That Teaches: Unraveling the Economic Impact of Banning Private Tutoring in China</strong><br>
+                            with Zibin Huang, Mingming Ma and Leo Y. Yang (Revise and Resubmit at <em>Journal of Comparative Economics</em>)
+                        </li>
+                        <li>
+                            <strong>Beyond Wealth: The Impact of Robot Adoption on Chronic Diseases</strong><br>
+                            with Zou Wang, Xiaoxuan Jin, and Angdi Lu (Revise and Resubmit at <em>Health Economics</em>)
+                        </li>
+                        <li>
+                            <strong>When National Canal Meets Local Pipelines: Clean Water Supply, Local Infrastructure and Health Benefits</strong><br>
+                            with Yazhen Gong, and Hao Zhao (Revise and Resubmit at <em>Journal of Environmental Economics and Management</em>)
+                        </li>
+                        <li>
+                            <strong>Exploitation vs. Exploration: How Knowledge Spillovers Shape Healthcare Practices and Innovation</strong><br>
+                            with Chen Lin, Zixiao Li, and Jing Zhang
+                        </li>
+                        <li>
+                            <strong>Does Telemedicine Alleviate Concerns About Healthcare Accessibility? Evidence from China</strong>
+                        </li>
+                        <li>
+                            <strong>The Value of Medicaid Long-Term Care: Evidence from the Deficit Reduction Act of 2005</strong>
+                        </li>
                     </ul>
                 </section>
             </div>
         </section>
 
-        <!-- CV Section (默认隐藏) -->
+        <!-- CV Section -->
         <section id="cv" class="content-section">
             <h2>Curriculum Vitae</h2>
             <p class="cv-intro">You can view my CV <a href="CV_2506.pdf" target="_blank">here</a>.</p>
@@ -470,10 +470,10 @@
     </div>
 
     <footer>
-        <p>Last updated: June, 2025</p> 
+        <p>Last updated: June, 2024</p>
     </footer>
 
-    <!-- JavaScript部分保持不变，因为它已经能很好地实现页面切换功能 -->
+    <!-- JavaScript部分保持不变 -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
@@ -491,14 +491,12 @@
                     if (targetId === 'about') {
                         section.style.display = 'flex';
                     } else {
-                        // For research and cv, use block display
                         section.style.display = 'block';
                     }
                 }
 
-                // Smooth scroll to the top of the content area
                 const contentTop = document.querySelector('.container').offsetTop;
-                window.scrollTo({ top: contentTop - 100, behavior: 'smooth' }); // Adjust 100 for fixed nav height + margin
+                window.scrollTo({ top: contentTop - 100, behavior: 'smooth' });
             }
 
             navLinks.forEach(link => {
