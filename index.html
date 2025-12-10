@@ -240,12 +240,19 @@
         }
         .publication-list li strong, .working-paper-list li strong {
             font-weight: bold;
+            /* display: block; */
+            /* margin-bottom: 3px; /* 减小标题和作者之间的间距 */ */
+        }
+        /* 新增这条规则，只让每项的第一个strong（即论文标题）单独占一行 */
+        .publication-list li > strong:first-of-type, 
+        .working-paper-list li > strong:first-of-type {
             display: block;
-            margin-bottom: 3px; /* 减小标题和作者之间的间距 */
+            margin-bottom: 3px;
         }
-        .publication-list li em, .working-paper-list li em {
+        
+        /* .publication-list li em, .working-paper-list li em {
             font-style: italic;
-        }
+        } */
         
         footer {
             text-align: center;
