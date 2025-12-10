@@ -240,32 +240,18 @@
         }
 
         /* 核心修改：针对论文列表的新样式 */
-        /* 样式1：让论文标题（em标签）单独占一行，并设为斜体、非粗体 */
-        .publication-list li > em:first-of-type, 
-        .working-paper-list li > em:first-of-type {
-            display: block;
-            margin-bottom: 3px;
-            font-style: italic;
-            font-weight: normal; 
-        }
-
-        /* 样式2：让期刊名称（strong标签）保持粗体 */
+        /* 样式1：让期刊名称（第二个strong元素）保持默认黑色粗体 */
         .publication-list li strong, .working-paper-list li strong {
             font-weight: bold;
-            /* display: block; */
-            /* margin-bottom: 3px; /* 减小标题和作者之间的间距 */ */
         }
-        
-        /* 新增这条规则，只让每项的第一个strong（即论文标题）单独占一行 */
-        /* .publication-list li > strong:first-of-type, 
+
+        /* 样式2：让论文标题（第一个strong元素）加粗、换行，并赋予新的颜色 */
+        .publication-list li > strong:first-of-type, 
         .working-paper-list li > strong:first-of-type {
             display: block;
             margin-bottom: 3px;
-        } */
-        
-        /* .publication-list li em, .working-paper-list li em {
-            font-style: italic;
-        } */
+            color: #333333; /* 深灰色 */
+        }
         
         footer {
             text-align: center;
@@ -361,15 +347,15 @@
                     <h3>Publications</h3>
                     <ol class="publication-list">
                         <li>
-                            <em>Beyond Wealth: The Impact of Robot Adoption on Chronic Diseases</em><br>
+                            <strong>Beyond Wealth: The Impact of Robot Adoption on Chronic Diseases</strong><br>
                             with Zou Wang, Xiaoxuan Jin, and <a href="http://ae.ruc.edu.cn/szdw/qzjs/apypx/L/apylad/index.htm" target="_blank">Angdi Lu</a>, <strong>Health Economics</strong>, (2025)
                         </li>
                         <li>
-                            <em>Biting the Hand That Teaches: Unraveling the Economic Impact of Banning Private Tutoring in China</em><br>
+                            <strong>Biting the Hand That Teaches: Unraveling the Economic Impact of Banning Private Tutoring in China</strong><br>
                             with <a href="https://www.zibinhuang.com" target="_blank">Zibin Huang</a>, <a href="https://scholar.xjtlu.edu.cn/en/persons/MingmingMa/" target="_blank">Mingming Ma</a> and <a href="https://www.leoyang.org" target="_blank">Leo Y. Yang</a>, <strong>Journal of Comparative Economics</strong>, 53(4): 954-976, (2025)
                         </li>
                         <li>
-                            <em>Green Innovation through Trade: the Impact of European Union Emissions Trading Scheme on Chinese Exporters</em><br>
+                            <strong>Green Innovation through Trade: the Impact of European Union Emissions Trading Scheme on Chinese Exporters</strong><br>
                             with Peiyao Lv, and <a href="https://sites.google.com/view/hao-zhao/" target="_blank">Hao Zhao</a>, <strong>Journal of International Money and Finance</strong>, 149, 103215, (2024)
                         </li>
                     </ol>
@@ -379,18 +365,18 @@
                     <h3>Working Papers</h3>
                     <ol class="working-paper-list">
                         <li>
-                            <em>Exploitation vs. Exploration: How Knowledge Spillovers Shape Healthcare Practices and Innovation</em><br>
+                            <strong>Exploitation vs. Exploration: How Knowledge Spillovers Shape Healthcare Practices and Innovation</strong><br>
                             with <a href="http://ae.ruc.edu.cn/szdw/qzjs/ayjspx/gmjjglx/jjfzyjjjgjys/lc/index.htm" target="_blank">Chen Lin</a>, Zixiao Li, and Jing Zhang (Revise and Resubmit at <strong>Journal of Development Economics</strong>)
                         </li>
                         <li>
-                            <em>When National Canal Meets Local Pipelines: Clean Water Supply, Local Infrastructure and Health Benefits</em><br>
+                            <strong>When National Canal Meets Local Pipelines: Clean Water Supply, Local Infrastructure and Health Benefits</strong><br>
                             with <a href="https://see.ruc.edu.cn/jszy/gyz/index.htm" target="_blank">Yazhen Gong</a>, and <a href="https://sites.google.com/view/hao-zhao/" target="_blank">Hao Zhao</a> (Revise and Resubmit at <strong>Journal of Environmental Economics and Management</strong>)
                         </li>
                         <li>
-                            <em>Does Telemedicine Alleviate Concerns About Healthcare Accessibility? Evidence from China</em>
+                            <strong>Does Telemedicine Alleviate Concerns About Healthcare Accessibility? Evidence from China</strong>
                         </li>
                         <li>
-                            <em>The Value of Medicaid Long-Term Care: Evidence from the Deficit Reduction Act of 2005</em>
+                            <strong>The Value of Medicaid Long-Term Care: Evidence from the Deficit Reduction Act of 2005</strong>
                         </li>
                    </ol>
                 </section>
